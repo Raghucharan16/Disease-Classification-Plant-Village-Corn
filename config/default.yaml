@@ -1,0 +1,27 @@
+seed: 1337
+device: "cuda"
+classes: ["blight","common_rust","gray_leaf_spot","healthy"]
+
+# training
+batch_size: 32
+epochs: 50
+lr: 1e-4
+weight_decay: 0.0
+num_workers: 4
+
+# RL-block (coarse)
+rl:
+  image_size: 128
+
+# PL-block-1 (fine)
+pl1:
+  image_size: 224
+
+# PL-block-2 (sensors)
+pl2:
+  features: ["temperature","humidity","pressure","soil_moisture"]
+
+# fusion
+fusion:
+  strategy: "soft_vote"
+  weights: null    # if null, auto-derive from val acc of each stream
