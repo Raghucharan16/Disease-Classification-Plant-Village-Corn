@@ -1,27 +1,28 @@
 seed: 1337
-device: "cuda"
-classes: ["blight","common_rust","gray_leaf_spot","healthy"]
-
-# training
-batch_size: 32
-epochs: 50
-lr: 1e-4
-weight_decay: 0.0
+device: "cpu"         # auto-falls back to cpu
 num_workers: 4
 
-# RL-block (coarse)
+# paths (point these to your folders)
+paths:
+  train_dir: "data/Train"
+  val_dir:   "data/Val"
+  test_dir:  "data/Test"
+  ckpt_dir:  "checkpoints"
+
+# training
+epochs: 50
+batch_size: 32
+lr: 1.0e-4
+weight_decay: 0.0
+
+# streams
 rl:
   image_size: 128
-
-# PL-block-1 (fine)
+  pretrained: true     
 pl1:
   image_size: 224
-
-# PL-block-2 (sensors)
-pl2:
-  features: ["temperature","humidity","pressure","soil_moisture"]
+  pretrained: false
 
 # fusion
 fusion:
-  strategy: "soft_vote"
-  weights: null    # if null, auto-derive from val acc of each stream
+  weights: null         # null = infer from per-stream val accuracy; else e.g. [0.4, 0.6]
