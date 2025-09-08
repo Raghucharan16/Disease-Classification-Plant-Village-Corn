@@ -1,6 +1,6 @@
 seed: 1337
 device: "cpu"         # auto-falls back to cpu
-num_workers: 4
+num_workers: 0
 
 # paths (point these to your folders)
 paths:
@@ -10,7 +10,7 @@ paths:
   ckpt_dir:  "checkpoints"
 
 # training
-epochs: 50
+epochs: 20
 runtime:
   runtime:
   print_every: 20
@@ -27,7 +27,7 @@ rl:
   pretrained: true     
 pl1:
   image_size: 224
-  pretrained: false
+  pretrained: true
 
 # fusion
 fusion:
