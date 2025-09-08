@@ -4,3 +4,4 @@ venv
 *.jpeg
 *.png
 __pycache__
+checkpoints
