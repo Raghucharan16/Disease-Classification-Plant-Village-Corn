@@ -37,7 +37,7 @@ def main():
     num_workers = int(cfg.get("num_workers", 0))
     _, _, dl_tr, dl_va = make_loaders(
         train_dir, val_dir,
-        cfg["rl1"]["image_size"],
+        cfg["rl"]["image_size"],
         cfg["batch_size"],
         num_workers,
     )
@@ -103,9 +103,9 @@ def main():
 
         if acc > best_acc:
             best_acc = acc
-            torch.save(model.state_dict(), ckpt_dir / "pl1_best.pth")
+            torch.save(model.state_dict(), ckpt_dir / "rl_best.pth")
 
-    print(f"[PL1] best_val_acc={best_acc:.4f}", flush=True)
+    print(f"[RL] best_val_acc={best_acc:.4f}", flush=True)
 
 
 if __name__ == "__main__":
